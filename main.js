@@ -107,9 +107,17 @@ new class {
     }
     init_room(room) {
 
-        room.on('test', (data, user) => {
+        room.on('big', (data, user) => {
             console.log(user)
             console.log(data)
+            let msg = {
+                time: this.time(),
+                nick: user.nick,
+                user: user.id,
+                message: "<h1>" + data.toString() + "</h1>"
+            }
+            room.messages.push(msg)
+            if (this.room?.name === room.name) this.render_message(msg)
         })
 
         room.on('msg', (data, user) => {
