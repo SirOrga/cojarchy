@@ -19,3 +19,7 @@ body {
 .send_area {
     background-color: var(--input-background);
 }
+
+#message_item {
+    color : var(--input-background);
+}
