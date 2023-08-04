@@ -7,7 +7,12 @@
     --modal-backgound: #261e13; /* dark brownish */
     --input-background: #63543d; /* brownish */
     --button-background: #63543d;
+    --input-color: #fff;
 
+}
+
+.command_usage {
+    color: var(--button-background);
 }
 
 body {
@@ -18,8 +23,10 @@ body {
   font-family: monospace, monospace;
 }
 
-input {
-    font-family: monospace, monospace;
+input,
+input[type="text"] {
+    color: var(--input-color);
+    font-family: var(--font-family);
 }
 
 .send_area {

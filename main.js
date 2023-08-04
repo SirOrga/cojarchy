@@ -114,7 +114,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: "<h1>" + data.toString() + "</h1>"
+                message: "<span class = 'command_usage'> used /big </span><h1>" + data.toString() + "</h1>"
             }
             room.messages.push(msg)
             if (this.room?.name === room.name) this.render_message(msg)
