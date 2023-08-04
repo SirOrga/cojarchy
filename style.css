@@ -6,7 +6,7 @@
     --modal-backgound: rgba(26, 26, 26, 0.664);
     --button-background: #555657;
     --input-background: #242424;
-    --font-familiy: monospace, monospace
+    --font-familiy: monospace, monospace;
 }
 
 html,
