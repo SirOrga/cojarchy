@@ -1,15 +1,21 @@
 :root {
     color-scheme: dark;
-    --border-color: #ccc;
-    --active-color: green;
-    --unread-color: orange;
-    --modal-backgound: rgba(26, 26, 26, 0.664);
-    --button-background: #555657;
+    --border-color: #8a8373; /* light brownish */
+    --active-color: #b4b6b0; /* blueish */
+    --unread-color: #94b4bb; /* orangish */
+    --modal-backgound: #261e13; /* dark brownish */
+    --input-background: #63543d; /* brownish */
+    --button-background: #63543d;
 }
 
 body {
-  
+    background-color: var(--modal-backgound);
+    font-family: monospace, monospace;
 }
 ::placeholder {
-  
+  color: var(--border-color);
+}
+
+.send_area {
+    background-color: var(--input-background);
 }
