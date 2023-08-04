@@ -181,7 +181,30 @@ new class {
                 }, 500)
             }
         })
-
+        room.on('color_yellow', (data, user) => {
+            console.log(user)
+            console.log(data)
+            let msg = {
+                time: this.time(),
+                nick: user.nick,
+                user: user.id,
+                message: '<span class = "command_usage"> used /color_yellow </span><p style="color:yellow">' + data.toString() + '</p>'
+            }
+            room.messages.push(msg)
+            if (this.room?.name === room.name) this.render_message(msg)
+            else {
+                let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
+                room.unread = true
+                if (r) r.style.color = "var(--unread-color)"
+            }
+            if (this.background) {
+                clearInterval(this.blink_title)
+                this.blink_title = setInterval(() => {
+                    if (document.title === this.original_title) document.title = 'New message'
+                    else document.title = this.original_title
+                }, 500)
+            }
+        })
         room.on('msg', (data, user) => {
             let msg = {
                 time: this.time(),
