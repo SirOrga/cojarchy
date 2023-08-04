@@ -1,10 +1,10 @@
 :root {
     color-scheme: dark;
-    --border-color: #8a8373; /* light brownish /
-    --active-color: #b4b6b0; / blueish /
-    --unread-color: #94b4bb; / orangish /
-    --modal-backgound: #261e13; / dark brownish /
-    --input-background: #63543d; / brownish */
+    --border-color: #8a8373; /* light brownish */
+    --active-color: #b4b6b0; /* blueish */
+    --unread-color: #94b4bb; /* orangish */
+    --modal-backgound: #261e13; /* dark brownish */
+    --input-background: #63543d; /* brownish */
     --button-background: #63543d;
 }
 
