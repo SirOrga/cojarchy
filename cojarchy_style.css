@@ -25,6 +25,7 @@ input {
 .send_area {
     background-color: var(--input-background);
     border-radius: 10px;
+    color:white;
 }
 
 .time {
