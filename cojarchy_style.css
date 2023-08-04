@@ -20,6 +20,6 @@ body {
     background-color: var(--input-background);
 }
 
-#message_item {
+.time {
     color : var(--input-background);
 }
