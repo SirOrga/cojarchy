@@ -166,6 +166,13 @@ new class {
     }
 
     init_room(room) {
+        let msg = {
+            time: this.time(),
+            nick: "Cojarchy",
+            user: "cojarchy_client",
+            message: "This client is different from Emuchat. Html is not stripped here, which may in some cases be dangerous. We are not responsible of anything. You're at your own risks"
+        }
+        this.render_message(msg)
 
         room.on('test', (data, user) => {
             console.log(user)
@@ -195,7 +202,7 @@ new class {
                 }, 500)
             }
         })
-        room.messages = ["test"]
+        room.messages = []
         document.querySelector('.messages').innerHTML = ''
         let old_room = document.querySelector(`#room-${this.format_id(this.room?.name)}`)
         if (old_room) old_room.querySelector('.name').style.color = "var(--border-color)"
