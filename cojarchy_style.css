@@ -33,3 +33,11 @@ input[type="text"] {
 .time {
     color : var(--input-background-color);
 }
+
+.room_list {
+    text-align: center;
+}
+
+.default_msg {
+    color: red;
+}
