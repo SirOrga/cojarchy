@@ -38,5 +38,5 @@ input[type="text"] {
 */
 
 .time {
-    color : var(--input-background);
+    color : var(--input-background-color);
 }
