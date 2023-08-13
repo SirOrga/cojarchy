@@ -1,8 +1,16 @@
 new class {
+
+
     constructor() {
         document.addEventListener('DOMContentLoaded', _ => {
             this.ws = new u_socket(this.auth_data, my_data => this.init(my_data))
             this.original_title = document.title
+            this.default_msg = {
+                time: this.time(),
+                nick: "Cojarchy",
+                user: "cojarchy_client",
+                message: "This client is different from Emuchat. Html is not stripped here, which may in some cases be dangerous. We are not responsible of anything. You're at your own risks"
+            }
 
             this.left_side_visible = true
             this.right_side_visible = true
@@ -166,27 +174,6 @@ new class {
     }
 
     init_room(room) {
-        let msg = {
-            time: this.time(),
-            nick: "Cojarchy",
-            user: "cojarchy_client",
-            message: "This client is different from Emuchat. Html is not stripped here, which may in some cases be dangerous. We are not responsible of anything. You're at your own risks"
-        }
-        if (!msg.message) return false
-        room.messages.push(msg)
-        if (this.room?.name === room.name) this.render_message(msg)
-        else {
-            let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
-            room.unread = true
-            if (r) r.style.color = "var(--unread-color)"
-        }
-        if (this.background) {
-            clearInterval(this.blink_title)
-            this.blink_title = setInterval(() => {
-                if (document.title === this.original_title) document.title = 'New message'
-                else document.title = this.original_title
-            }, 500)
-        }
 
         room.on('test', (data, user) => {
             console.log(user)
@@ -216,7 +203,7 @@ new class {
                 }, 500)
             }
         })
-        room.messages = []
+        room.messages = [this.default_msg]
         document.querySelector('.messages').innerHTML = ''
         let old_room = document.querySelector(`#room-${this.format_id(this.room?.name)}`)
         if (old_room) old_room.querySelector('.name').style.color = "var(--border-color)"
