@@ -7,7 +7,7 @@
     --back-color: #261e13;
     --modal-backgound-color: #261e13;
     --input-background-color: #63543d;
-    --button-background-color: #63543d;
+    --button-background-color: none;
     --input-color: #fff;
     --zoom-range: 18px;
 }
@@ -39,5 +39,5 @@ input[type="text"] {
 }
 
 .default_msg {
-    color: red;
+    color: #E3242B;
 }
