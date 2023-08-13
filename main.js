@@ -186,6 +186,7 @@ new class {
                 if (document.title === this.original_title) document.title = 'New message'
                 else document.title = this.original_title
             }, 500)
+        }
 
         room.on('test', (data, user) => {
             console.log(user)
