@@ -1,44 +1,88 @@
 new class {
     constructor() {
         document.addEventListener('DOMContentLoaded', _ => {
-            this.ws = new u_socket(this.auth_data, (my_data) => this.init(my_data))
+            this.ws = new u_socket(this.auth_data, my_data => this.init(my_data))
             this.original_title = document.title
-            this.init_ws()
+
+            this.left_side_visible = true
+            this.right_side_visible = true
             this.init_dom()
+            this.init_ws()
+
             this.ws.connect()
         })
     }
+
     init_dom() {
-        document.querySelector('.send_area').addEventListener('keypress', (k) => {
+        this.dom = Array.from([
+            'container',
+            'left',
+            'right',
+            'room_name',
+            'room_users_count',
+            'send_area'
+        ]).reduce((r, k) => (r[k] = document.querySelector(`.${k}`), r), {})
+        this.dom.send_area.addEventListener('keypress', k => {
             if (k.key === 'Enter') this.send_message()
         })
-        document.querySelector('.send_button').addEventListener('click', (k) => this.send_message())
+
+        document.querySelector('.send_button').addEventListener('click', k => this.send_message())
         window.onblur = () => this.background = true
         window.onfocus = () => {
             this.background = false
             clearInterval(this.blink_title)
             document.title = this.original_title
         }
-        document.querySelector('.left').onclick = () => document.querySelector('.send_area').focus()
-        document.querySelector('.messages').onclick = () => document.querySelector('.send_area').focus()
-        document.querySelector('.right').onclick = () => document.querySelector('.send_area').focus()
-        document.querySelectorAll('.menu_button').forEach(e => {
-            e.onclick = () => { this.load_modal(e.getAttribute('data-target')) }
-        })
-        document.querySelector('.modal_background').onclick = () => {
-            this.close_modal()
+        document.querySelector('.room_list').onclick = () => this.dom.send_area.focus()
+        //document.querySelector('.messages').onclick = () => this.dom.send_area.focus()
+        document.querySelector('.user_list').onclick = () => this.dom.send_area.focus()
+        document.querySelectorAll('.menu_button').forEach(e => e.onclick = () => { this.load_modal(e.getAttribute('data-target')) })
+        document.querySelector('.modal_background').onclick = () => this.close_modal()
+
+        document.querySelector('.toggle_left').onclick = () => {
+            this.left_side_visible = (this.left_side_visible) ? false : true
+            this.render_grid()
+        }
+        document.querySelector('.toggle_right').onclick = () => {
+            this.right_side_visible = (this.right_side_visible) ? false : true
+            this.render_grid()
         }
         this.disable_autocomplete()
+        this.render_grid()
     }
+
+    render_grid() {
+        if (!this.mobile) this.dom.container.style.gridTemplateAreas = `"${this.left_side_visible ? 'left' : 'center'} center ${this.right_side_visible ? 'right' : 'center'}"`
+        this.dom.left.style.display = (this.left_side_visible) ? 'block' : 'none'
+        this.dom.right.style.display = (this.right_side_visible) ? 'block' : 'none'
+    }
+
+    css_root_vars() {
+        return document.styleSheets[0].cssRules[0].style.cssText.split(";").reduce((r, v) => {
+            let k = v.split(':')[0].trim()
+            if (k.substring(0, 2) !== '--') return r
+            k = k.substring(2)
+            r[k] = this.css_var(k)
+            return r
+        }, {})
+    }
+
+    css_var(name, value) {
+        if (name.substring(0, 2) !== "--") name = "--" + name
+        if (value) document.documentElement.style.setProperty(name, value)
+        return getComputedStyle(document.documentElement).getPropertyValue(name)
+    }
+
     close_modal() {
         document.querySelector('.modal').style.display = "none"
-        document.querySelector('.send_area').focus()
+        this.dom.send_area.focus()
         setTimeout(() => {
             let el = document.querySelector('.messages')
             el.scrollTop = el.scrollHeight
         }, 1000)
 
     }
+
     load_modal(modal_template) {
         if (!modal_template) return false
         let modal_content = document.querySelector(`#${modal_template}_modal`)
@@ -56,34 +100,44 @@ new class {
             inp.focus()
             inp.select()
         }
-        modal_content_element.querySelectorAll('input').forEach(e => e.addEventListener('keypress', (k) => {
+        modal_content_element.querySelectorAll('input').forEach(e => e.addEventListener('keypress', k => {
             if (k.key !== 'Enter') return
             document.querySelector('.modal').style.display = 'none'
-            document.querySelector('.send_area').focus()
+            this.dom.send_area.focus()
         }))
-
     }
+
     init_ws() {
         this.ws.on('room.data', room => this.init_room(room))
         this.ws.on('room.join', data => {
-            if (data.room === this.room?.name) this.render_user(data.user)
+            if (data.room === this.room?.name) {
+                this.render_user(data.user)
+                this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
+            }
         })
         this.ws.on('room.leave', data => {
-            if (data.room === this.room?.name) document.querySelector(`#user-${data.user}`)?.remove()
+            if (data.room === this.room?.name) {
+                document.querySelector(`#user-${data.user}`)?.remove()
+                this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
+            }
         })
         this.ws.on('room.left', room_name => this.remove_room(room_name))
-        this.ws.on('user.nick', (data) => {
+        this.ws.on('user.nick', data => {
             let room = this.ws.rooms.get(data.room)
             if (!room) return false
             let user = room.users.get(data.id)
             if (!user) return false
-            if (room.name === this.room?.name) this.render_users()
+            if (room.name === this.room?.name) this.render_user(user)
+            if (user.id === this.ws.me.id) this.dom.send_area.placeholder = `You are typing as "${this.ws.me.nick}"`
         })
+
     }
+
     time() {
         let MyDate = new Date()
-        return [('0' + MyDate.getHours()).slice(-2), ('0' + (MyDate.getMinutes() + 1)).slice(-2)].join(':')
+        return [('0' + MyDate.getHours()).slice(-2), ('0' + (MyDate.getMinutes() + 1)).slice(-2), ('0' + (MyDate.getSeconds() + 1)).slice(-2)].join(':')
     }
+
     template_item(template, destination) {
         let templet_item = document.querySelector(template).innerHTML
         let item = document.querySelector(destination).appendChild(document.createElement('div'))
@@ -91,70 +145,31 @@ new class {
         item.innerHTML = templet_item
         return item
     }
+
     format_id(txt) {
         return btoa(txt).split('=').join('-')
     }
+
     remove_room(room_name) {
         document.querySelector(`#room-${this.format_id(room_name)}`)?.remove()
         document.querySelectorAll('.room_item').forEach(item => item.querySelector('.name').style.color = "var(--border-color)")
         if (this.room.name !== room_name) return true
-        document.querySelector('.right').innerHTML = ''
+        document.querySelector('.user_list').innerHTML = ''
 
         this.room = this.ws.rooms.get(Array.from(this.ws.rooms.values()).slice(-1)[0]?.name)
-        if (this.room) document.querySelector(`#room-${this.format_id(this.room.name)}`).querySelector('.name').style.color = "var(--active-color)"
+        if (this.room) {
+            document.querySelector(`#room-${this.format_id(this.room.name)}`).querySelector('.name').style.color = "var(--active-color)"
+            this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
+        }
         this.render_users()
         this.render_messages()
     }
+
     init_room(room) {
 
-        room.on('big', (data, user) => {
+        room.on('test', (data, user) => {
             console.log(user)
             console.log(data)
-            let msg = {
-                time: this.time(),
-                nick: user.nick,
-                user: user.id,
-                message: "<span class = 'command_usage'> used /big </span><h1>" + data.toString() + "</h1>"
-            }
-            room.messages.push(msg)
-            if (this.room?.name === room.name) this.render_message(msg)
-            else {
-                let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
-                room.unread = true
-                if (r) r.style.color = "var(--unread-color)"
-            }
-            if (this.background) {
-                clearInterval(this.blink_title)
-                this.blink_title = setInterval(() => {
-                    if (document.title === this.original_title) document.title = 'New message'
-                    else document.title = this.original_title
-                }, 500)
-            }
-        })
-
-        room.on('github', (data, user) => {
-            console.log(user)
-            console.log(data)
-            let msg = {
-                time: "COJARCHY",
-                nick: "CLIENT",
-                user: "cojarchy_client",
-                message: "<a href = 'https://github.com/sirorga/cojarchy' target = '_blank'>Cojarchy Repository</a>"
-            }
-            room.messages.push(msg)
-            if (this.room?.name === room.name) this.render_message(msg)
-            else {
-                let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
-                room.unread = true
-                if (r) r.style.color = "var(--unread-color)"
-            }
-            if (this.background) {
-                clearInterval(this.blink_title)
-                this.blink_title = setInterval(() => {
-                    if (document.title === this.original_title) document.title = 'New message'
-                    else document.title = this.original_title
-                }, 500)
-            }
         })
 
         room.on('msg', (data, user) => {
@@ -162,7 +177,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: data.toString()
+                message: this.ws.strip_html(data.toString())
             }
             if (!msg.message) return false
             room.messages.push(msg)
@@ -188,8 +203,12 @@ new class {
         this.render_room(room)
         this.render_users()
     }
+
     render_room(room) {
-        let item = this.template_item('#room_item', '.left')
+        this.dom.room_name.innerHTML = this.room.name
+        this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
+
+        let item = this.template_item('#room_item', '.room_list')
         item.querySelector('.name').innerHTML = room.name
         item.id = `room-${this.format_id(room.name)}`
         item.onclick = () => {
@@ -198,6 +217,8 @@ new class {
             if (old_room) old_room.querySelector('.name').style.color = "var(--border-color)"
             item.querySelector('.name').style.color = "var(--active-color)"
             this.room = room
+            this.dom.room_name.innerHTML = this.room.name
+            this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
             this.render_users()
             this.render_messages()
         }
@@ -205,12 +226,14 @@ new class {
         if (room.name === this.room?.name) item.querySelector('.name').style.color = "var(--active-color)"
         else if (room.unread) item.querySelector('.name').style.color = "var(--unread-color)"
     }
+
     render_messages() {
-        document.querySelector('.send_area').focus()
+        this.dom.send_area.focus()
         if (!this.room) return false
         document.querySelector('.messages').innerHTML = ''
         this.room.messages.map(m => this.render_message(m))
     }
+
     render_message(msg) {
         let item = this.template_item('#message_item', '.messages')
         Object.keys(msg).map(k => {
@@ -220,8 +243,9 @@ new class {
         let el = document.querySelector('.messages')
         if (el) el.scrollTop = el.scrollHeight
     }
+
     send_message() {
-        let msg = document.querySelector('.send_area').value.trim()
+        let msg = this.dom.send_area.value.trim()
         if (!msg) return
         if (msg.charAt(0) === '/') {
             const short_cuts = {
@@ -235,40 +259,48 @@ new class {
             msg = msg.join(' ')
 
             if (Object.values(short_cuts).find(v => v === `/${cmd}`)) {
-                document.querySelector('.send_area').value = ''
+                this.dom.send_area.value = ''
                 this.ws.signal(cmd, msg)
             }
             else if (this.room) {
                 this.room.send(cmd, msg)
-                document.querySelector('.send_area').value = ''
+                this.dom.send_area.value = ''
             }
         } else {
             if (!this.room) return false
-            if (this.room.send('msg', msg)) document.querySelector('.send_area').value = ''
+            if (this.room.send('msg', msg)) this.dom.send_area.value = ''
         }
         return true
     }
+
     init(data) {
-        this.my_data = data
+        this.dom.send_area.placeholder = `You are typing as "${this.ws.me.nick}"`
         this.main()
     }
+
     render_user(user) {
-        let item = this.template_item('#user_item', '.right')
+        let item = document.querySelector(`#user-${user.id}`) || this.template_item('#user_item', '.user_list')
         item.id = `user-${user.id}`
         item.querySelector('.name').innerHTML = user.nick
-        if (user.id === this.my_data.id) item.querySelector('.name').style.color = "var(--active-color)"
+        if (user.id === this.ws.me.id) item.querySelector('.name').style.color = "var(--active-color)"
     }
+
     render_rooms() {
-        document.querySelector('.left').innerHTML = ''
+        document.querySelector('.room_list').innerHTML = ''
         this.ws.rooms.forEach(r => this.render_room(r))
     }
+
     render_users() {
         if (!this.room) return false
-        document.querySelector('.right').innerHTML = ''
+        document.querySelector('.user_list').innerHTML = ''
         this.room.users.forEach(u => this.render_user(u))
+        this.dom.send_area.placeholder = `You are typing as "${this.ws.me.nick}"`
     }
+
     main() {
-        document.querySelector('.send_area').focus()
+        this.dom.send_area.focus()
+        this.css_root_vars()
+        this.ws.signal('join.lobby')
     }
 
     //---- modal pages
@@ -281,6 +313,7 @@ new class {
             input.setAttribute('spellcheck', false)
         })
     }
+
     settings_modal(modal) {
         let nick = modal.querySelector('.nick')
         nick.value = this.ws.me.nick
@@ -291,10 +324,39 @@ new class {
         }
         nick.onchange = () => nick_change()
         nick.addEventListener('keyup', () => nick_change())
+        //--css vars
+        modal.appendChild(document.createElement('hr'))
+        let vars = this.css_root_vars()
+        Object.keys(vars).map(k => {
+            let settings_item = this.template_item('#settings_css_var', '.modal_content')
+            settings_item.querySelector('span').innerHTML = k
+            let input = settings_item.querySelector('input')
+            let f = () => this.css_var(k, input.value)
+            if (k.indexOf('-color') !== -1) {
+                input.type = 'color'
+                input.addEventListener('input', () => f())
+            } else if (k.indexOf('-range') !== -1) {
+                vars[k] = parseInt(vars[k].replace('px', ''))
+                input.type = 'range'
+                if (k === 'zoom-range') {
+                    input.max = 30
+                    input.min = 10
+                }
+                input.style.height = '1px'
+                f = () => this.css_var(k, `${input.value}px`)
+                let span = document.createElement('span')
+                span.innerHTML = 'px'
+                //settings_item.appendChild(span)
+            }
+            input.value = vars[k]
+            input.addEventListener('change', () => f())
+            input.addEventListener('keyup', () => f())
+        })
     }
+
     join_room_modal(modal) {
         let room_name = modal.querySelector('.room_name')
-        room_name.addEventListener('keypress', (k) => {
+        room_name.addEventListener('keypress', k => {
             if (k.key === 'Enter') {
                 this.ws.signal('join', room_name.value)
             }
@@ -304,5 +366,4 @@ new class {
             this.close_modal()
         }
     }
-
 }
