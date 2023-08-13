@@ -177,7 +177,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: this.ws.strip_html(data.toString())
+                message: data.toString()
             }
             if (!msg.message) return false
             room.messages.push(msg)
