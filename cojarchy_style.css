@@ -23,19 +23,12 @@ body {
   color: var(--border-color);
   font-family: monospace, monospace;
 }
+*/
 
 input,
 input[type="text"] {
     color: var(--input-color);
-    font-family: var(--font-family);
 }
-
-.send_area {
-    background-color: var(--input-background);
-    border-radius: 10px;
-    color:#EFF0EB;
-}
-*/
 
 .time {
     color : var(--input-background-color);
