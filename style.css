@@ -1,0 +1,222 @@
+:root {
+    color-scheme: dark;
+    --front-color: #cccccc;
+    --back-color: #222222;
+    --active-color: #008000;
+    --unread-color: #ffa500;
+    --modal-backgound-color: #1a1a1a;
+    --button-background-color: #555657;
+    --input-background-color: #363636;
+    --font-familiy: monospace, monospace;
+    --zoom-range: 18px;
+}
+
+*:focus {
+    outline: none;
+}
+
+::-webkit-scrollbar {
+    height: 5px;
+    width: 5px;
+    background: var(--input-background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--button-background-color);
+}
+
+::placeholder {
+    color: var(--front-color);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    color: var(--front-color);
+    font-family: var(--font-familiy);
+    background-color: var(--back-color);
+    font-size: var(--zoom-range);
+}
+
+hr {
+    height: 1px;
+    border: none;
+    background-color: var(--front-color);
+}
+
+.settings_css_var {
+    margin-bottom: 2px;
+}
+
+button {
+    cursor: pointer;
+    background-color: var(--button-background-color);
+    appearance: none;
+    border-radius: 0;
+    border: none;
+    outline: none;
+    color: var(--front-color);
+    font-family: var(--font-familiy);
+}
+
+input, input[type="text"] {
+    color: var(--front-color);
+    background-color: var(--input-background-color);
+    outline: none;
+    border: 1px solid var(--front-color);
+    padding: 2px;
+    font-family: var(--font-familiy);
+    font-size: var(--zoom-range);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.modal_content button {
+    border: 1px solid var(--front-color);
+    padding: 2px 10px;
+}
+
+.container {
+    height: calc(100% - 32px);
+    display: grid;
+    grid-template-columns: 0.4fr 2.2fr 0.4fr;
+    grid-template-rows: 1fr;
+    gap: 0 0;
+    grid-auto-flow: row;
+    grid-template-areas: "center center center"
+}
+
+@media only screen and (max-width: 1600px) {
+    .container {
+        grid-template-columns: 0.52fr 1.6fr 0.52fr;
+    }
+}
+
+@media only screen and (max-width: 1072px) {
+    .container {
+        grid-template-columns: 0.5fr 1.55fr 0.95fr;
+    }
+}
+
+@media only screen and (max-width: 670px) {
+    .container {
+        grid-template-columns: 0.5fr 1.4fr 1.1fr;
+    }
+}
+
+.top {
+    height: 30px;
+    border: 1px solid var(--front-color);
+}
+
+.left {
+    grid-area: left;
+    border-left: 1px solid var(--front-color);
+    border-bottom: 1px solid var(--front-color);
+    overflow: hidden;
+    display: none;
+}
+
+.room_list, .user_list {
+    border-top: 1px solid var(--front-color);
+    padding: 4px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    height: calc(100% - 40px);
+}
+
+.right {
+    grid-area: right;
+    border-right: 1px solid var(--front-color);
+    border-bottom: 1px solid var(--front-color);
+    overflow: hidden;
+    display: none;
+}
+
+.center {
+    grid-area: center;
+    border-left: 1px solid var(--front-color);
+    border-right: 1px solid var(--front-color);
+    overflow: hidden;
+}
+
+.messages {
+    scrollbar-width: thin;
+    overflow-y: auto;
+    height: calc(100% - 40px);
+    padding: 4px;
+}
+
+.bottom {
+    height: 30px;
+    overflow: hidden;
+    border: 1px solid var(--front-color);
+    border-left: none;
+    border-right: none;
+}
+
+.send_area {
+    float: left;
+    width: calc(100% - 44px);
+    height: 30px;
+    border: none !important;
+    padding: 0 !important;
+    padding-left: 4px !important;
+    outline: none;
+    font-size: var(--zoom-range);
+    /* You can adjust the color and thickness of the outline */
+}
+
+.send_button {
+    float: left;
+    width: 40px;
+    height: 30px;
+}
+
+.user_item, .room_item {
+    cursor: pointer;
+}
+
+.room_info {
+    padding: 4px;
+}
+
+.modal_content {
+    position: absolute;
+    padding: 10px;
+    left: 0;
+    z-index: 2;
+    border: 1px solid var(--front-color);
+    background-color: var(--modal-backgound-color);
+}
+
+.modal {
+    display: none;
+}
+
+.modal_background {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--modal-backgound-color);
+    z-index: 1;
+    opacity: 0.8;
+}
+
+.menu_button {
+    float: left;
+    margin-right: 1px;
+}
+
+.room_item {
+    overflow: hidden;
+    font-size: calc(var(--zoom-range) + 2px);
+}
+
+.room_item:hover {
+    opacity: 0.8;
+}
