@@ -195,7 +195,7 @@ new class {
                 }, 500)
             }
         })
-        room.messages = []
+        room.messages = ["test"]
         document.querySelector('.messages').innerHTML = ''
         let old_room = document.querySelector(`#room-${this.format_id(this.room?.name)}`)
         if (old_room) old_room.querySelector('.name').style.color = "var(--border-color)"
