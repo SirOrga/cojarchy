@@ -1,17 +1,17 @@
-/*
 :root {
     color-scheme: dark;
     --font-family: monospace, monospace;
-    --border-color: #8a8373; 
+    --front-color: #8a8373; 
     --active-color: #b4b6b0;
     --unread-color: #94b4bb; 
-    --modal-backgound: #261e13;
-    --input-background: #63543d;
-    --button-background: #63543d;
+    --back-color: #261e13;
+    --modal-backgound-color: #261e13;
+    --input-background-color: #63543d;
+    --button-background-color: #63543d;
     --input-color: #fff;
-
+    --zoom-range: 18px;
 }
-
+/*
 .command_usage {
     color: var(--button-background);
 }
