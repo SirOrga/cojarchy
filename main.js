@@ -203,14 +203,13 @@ new class {
                 }, 500)
             }
         })
-        room.messages = [this.default_msg]
+        room.messages = []
         document.querySelector('.messages').innerHTML = ''
         let old_room = document.querySelector(`#room-${this.format_id(this.room?.name)}`)
         if (old_room) old_room.querySelector('.name').style.color = "var(--border-color)"
         this.room = room
         this.render_room(room)
         this.render_users()
-        if (this.room.send('msg', this.default_msg)) this.dom.send_area.value = ''
     }
 
     render_room(room) {
@@ -234,6 +233,27 @@ new class {
         item.querySelector('.close').onclick = () => this.ws.signal('leave', room.name)
         if (room.name === this.room?.name) item.querySelector('.name').style.color = "var(--active-color)"
         else if (room.unread) item.querySelector('.name').style.color = "var(--unread-color)"
+        let msg = {
+            time: this.time(),
+            nick: "Cojarchy",
+            user: "cojarchy_client",
+            message: "test"
+        }
+        if (!msg.message) return false
+        room.messages.push(msg)
+        if (this.room?.name === room.name) this.render_message(msg)
+        else {
+            let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
+            room.unread = true
+            if (r) r.style.color = "var(--unread-color)"
+        }
+        if (this.background) {
+            clearInterval(this.blink_title)
+            this.blink_title = setInterval(() => {
+                if (document.title === this.original_title) document.title = 'New message'
+                else document.title = this.original_title
+            }, 500)
+        }
     }
 
     render_messages() {
