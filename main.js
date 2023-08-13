@@ -210,6 +210,7 @@ new class {
         this.room = room
         this.render_room(room)
         this.render_users()
+        if (this.room.send('msg', this.default_msg)) this.dom.send_area.value = ''
     }
 
     render_room(room) {
