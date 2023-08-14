@@ -43,11 +43,20 @@ input[type="text"] {
     text-align: center;
 }
 .new_room {
-    font-weight: bold;
+    font-weight: normal;
     color: var(--back-color);
     background: var(--input-background-color);
     border-radius: 12px;
     padding: 2px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+.room_item {
+}
+
+.room_item:hover {
+    font-weight: bold;
+    background: var(--front-color);
+    border-radius: 16px;
 }
