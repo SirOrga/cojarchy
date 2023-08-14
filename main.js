@@ -234,8 +234,8 @@ new class {
         if (room.name === this.room?.name) item.querySelector('.name').style.color = "var(--active-color)"
         else if (room.unread) item.querySelector('.name').style.color = "var(--unread-color)"
         let msg = {
-            time: this.time(),
-            nick: "Cojarchy",
+            time: "",
+            nick: "",
             user: "cojarchy_client",
             message: "<h3 class='default_msg'>HTML is not stripped. You're here at your own risks."
         }
