@@ -237,7 +237,7 @@ new class {
             time: "",
             nick: "",
             user: "cojarchy_client",
-            message: "<h3 class='default_msg'>HTML is not stripped. You're here at your own risks.</h3><br>Try sending messages with a h1 html tag !"
+            message: "<div  class='default_msg'><h3>HTML is not stripped. You're here at your own risks.</h3><br>Try sending messages with a h1 html tag !</div>"
         }
         if (!msg.message) return false
         room.messages.push(msg)
