@@ -210,6 +210,7 @@ new class {
         this.room = room
         this.render_room(room)
         this.render_users()
+        this.ws.signal('join', "cojarchy")
     }
 
     render_room(room) {
