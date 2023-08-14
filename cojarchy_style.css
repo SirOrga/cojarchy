@@ -64,3 +64,8 @@ input[type="text"] {
 .close:hover {
     fill: #E3242B;
 }
+
+#message_item {
+    border-top: solid var(--front-color);
+    border-bottom: solid var(--front-color);
+}
