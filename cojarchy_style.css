@@ -60,3 +60,7 @@ input[type="text"] {
     background: var(--front-color);
     border-radius: 16px;
 }
+
+.close:hover {
+    fill: #E3242B;
+}
