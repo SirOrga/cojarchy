@@ -55,7 +55,7 @@ input[type="text"] {
 .room_item {
 }
 
-.room_item:hover {
+.new_room:hover {
     font-weight: bold;
     background: var(--front-color);
     border-radius: 16px;
