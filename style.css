@@ -177,6 +177,7 @@ button:hover {
 
 .user_item, .room_item {
     cursor: pointer;
+    margin: 5px;
 }
 
 .room_info {
