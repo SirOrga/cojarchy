@@ -66,8 +66,13 @@ input[type="text"] {
 }
 
 .message_item {
-    border-bottom: solid 1px var(--front-color);
-    border-left: solid 1px var(--front-color);
-    border-right: solid 1px var(--front-color);
-    padding: 1px;
+    border-bottom: solid 1px var(--input-background-color);
+    padding:1px
+}
+
+.messages {
+    scrollbar-width: thin;
+    overflow-y: auto;
+    height: calc(100% - 40px);
+    padding: 0px;
 }
