@@ -40,6 +40,7 @@ input[type="text"] {
 
 .default_msg {
     color: #E3242B;
+    text-align: center;
 }
 .new_room {
     font-weight: bold;
