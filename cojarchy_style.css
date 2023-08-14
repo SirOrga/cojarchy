@@ -66,6 +66,5 @@ input[type="text"] {
 }
 
 .message_item {
-    border-top: solid var(--front-color);
-    border-bottom: solid var(--front-color);
+    border-bottom: 1px var(--front-color);
 }
