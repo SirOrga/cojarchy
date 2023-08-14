@@ -76,3 +76,8 @@ input[type="text"] {
     height: calc(100% - 40px);
     padding: 0px;
 }
+
+.nick {
+  color: var(--active-color);
+  padding: 1px;
+}
