@@ -45,8 +45,8 @@ input[type="text"] {
 .new_room {
     font-weight: normal;
     color: var(--back-color);
-    background: var(--input-background-color);
-    border-radius: 12px;
+    background: var(--front-color);
+    border-radius: 16px;
     padding: 2px;
     padding-left: 20px;
     padding-right: 20px;
@@ -57,7 +57,7 @@ input[type="text"] {
 
 .new_room:hover {
     font-weight: bold;
-    background: var(--front-color);
+    background: var(--input-background-color);
     border-radius: 16px;
 }
 
@@ -65,7 +65,7 @@ input[type="text"] {
     fill: #E3242B;
 }
 
-#message_item {
+.message_item {
     border-top: solid var(--front-color);
     border-bottom: solid var(--front-color);
 }
