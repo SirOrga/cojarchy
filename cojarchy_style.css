@@ -52,9 +52,6 @@ input[type="text"] {
     padding-right: 20px;
 }
 
-.room_item {
-}
-
 .new_room:hover {
     font-weight: bold;
     background: var(--input-background-color);
@@ -75,9 +72,14 @@ input[type="text"] {
     overflow-y: auto;
     height: calc(100% - 40px);
     padding: 0px;
+    padding-bottom: 8px;
 }
 
 .nick {
   color: var(--active-color);
   padding: 1px;
+}
+
+.center {
+    border-radius: 8px;
 }
