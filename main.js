@@ -143,7 +143,7 @@ new class {
 
     time() {
         let MyDate = new Date()
-        return [('0' + MyDate.getHours()).slice(-2), ('0' + (MyDate.getMinutes() + 1)).slice(-2), ('0' + (MyDate.getSeconds() + 1)).slice(-2)].join(':')
+        return [('0' + MyDate.getHours()).slice(-2), ('0' + (MyDate.getMinutes() + 1)).slice(-2)].join(':')
     }
 
     template_item(template, destination) {

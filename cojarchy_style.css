@@ -32,6 +32,8 @@
   
   .time {
     color: var(--input-background-color);
+    float: right;
+    padding-left: 5px;
   }
   
   .room_list {
