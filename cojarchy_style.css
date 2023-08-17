@@ -1,15 +1,15 @@
 :root {
-    color-scheme: dark;
-    --font-family: monospace, monospace;
-    --front-color: #8a8373; 
-    --active-color: #b4b6b0;
-    --unread-color: #94b4bb; 
-    --back-color: #261e13;
-    --modal-backgound-color: #261e13;
-    --input-background-color: #63543d;
-    --button-background-color: none;
-    --input-color: #fff;
-    --zoom-range: 18px;
+  color-scheme: dark;
+  --font-family: monospace, monospace;
+  --front-color: #8a8373;
+  --active-color: #b4b6b0;
+  --unread-color: #94b4bb;
+  --back-color: #261e13;
+  --modal-backgound-color: #261e13;
+  --input-background-color: #63543d;
+  --button-background-color: none;
+  --input-color: #fff;
+  --zoom-range: 18px;
 }
 /*
 .command_usage {
@@ -27,58 +27,60 @@ body {
 
 input,
 input[type="text"] {
-    color: var(--input-color);
+  color: var(--input-color);
 }
 
 .time {
-    color : var(--input-background-color);
+  color: var(--input-background-color);
 }
 
 .room_list {
-    text-align: center;
+  text-align: center;
 }
 
 .default_msg {
-    color: #E3242B;
-    text-align: center;
-    padding-bottom: 20px;
-    border: solid 1px;
-    border-radius:5px;
-    margin: 5px;
+  color: #e3242b;
+  text-align: center;
+  padding-bottom: 20px;
+  border: solid 1px;
+  border-radius: 5px;
+  margin: 5px;
   border-bottom: none;
 }
 .new_room {
-    font-weight: normal;
-    color: var(--back-color);
-    background: var(--front-color);
-    border-radius: 16px;
-    padding: 2px;
-    padding-left: 20px;
-    padding-right: 20px;
+  font-weight: normal;
+  color: var(--back-color);
+  background: var(--front-color);
+  border-radius: 16px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .new_room:hover {
-    font-weight: bold;
-    background: var(--input-background-color);
-    border-radius: 16px;
+  font-weight: bold;
+  background: var(--input-background-color);
+  border-radius: 16px;
 }
 
 .close:hover {
-    fill: #E3242B;
+  fill: #e3242b;
 }
 
 .message_item {
-    border-bottom: solid 1px var(--input-background-color);
-    padding:1px
+  border-bottom: solid 1px var(--input-background-color);
+  padding: 10px;
+  width: 100%;
+  word-wrap: break-word;
 }
 
 .messages {
-    scrollbar-width: thin;
-    overflow-y: auto;
-    height: calc(100% - 40px);
-    padding: 0px;
-    padding-top: 3px;
-    padding-bottom: 8px;
+  scrollbar-width: thin;
+  overflow-y: auto;
+  height: calc(100% - 40px);
+  padding: 0px;
+  padding-bottom: 8px;
+  padding-right: 12px;
 }
 
 .nick {
@@ -87,5 +89,5 @@ input[type="text"] {
 }
 
 .center {
-    border-radius: 8px;
+  border-radius: 8px;
 }
