@@ -187,6 +187,7 @@ new class {
                 user: user.id,
                 message: data.toString()
             }
+            playSound('https://samplelib.com/lib/preview/mp3/sample-3s.mp3');
             if (!msg.message) return false
             room.messages.push(msg)
             if (this.room?.name === room.name) this.render_message(msg)
@@ -397,3 +398,13 @@ new class {
         }
     }
 }
+
+function playSound(url) {
+    if (!document.hidden) {
+        return false
+    }
+    else {
+        const audio = new Audio(url);
+        audio.play();
+    }
+  }
