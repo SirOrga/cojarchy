@@ -31,7 +31,7 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--input-background-color: #63543d);
+    background: #63543d;
 }
 
 ::-webkit-scrollbar-thumb {
