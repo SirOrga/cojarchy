@@ -238,7 +238,7 @@ new class {
             time: "",
             nick: "",
             user: "cojarchy_client",
-            message: "<div  class='default_msg'><h2>Welcome to <span id = 'defmsg_title'>Cojarchy</span></h3><br>Html is not stripped! Try sending messages with a <strong>&lth1&gt</strong> html tag</div>"
+            message: "<div  class='default_msg'><h2>Welcome to <span id = 'defmsg_title'>Cojarchy</span></h3>Html is not stripped! Try sending messages with a <strong>&lth1&gt</strong> html tag</div>"
         }
         if (!msg.message) return false
         room.messages.push(msg)
