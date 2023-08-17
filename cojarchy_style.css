@@ -41,6 +41,11 @@ input[type="text"] {
 .default_msg {
     color: #E3242B;
     text-align: center;
+    padding-bottom: 20px;
+    border: solid 1px;
+    border-radius:5px;
+    margin: 5px;
+  border-bottom: none;
 }
 .new_room {
     font-weight: normal;
@@ -72,6 +77,7 @@ input[type="text"] {
     overflow-y: auto;
     height: calc(100% - 40px);
     padding: 0px;
+    padding-top: 3px;
     padding-bottom: 8px;
 }
 
