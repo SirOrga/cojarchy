@@ -45,14 +45,14 @@
       
 }
   
-  ::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: var(--front-color);
 }
   
 input,
 input[type="text"] {
-    color: var(--input-color);
     background: var(--back-color);
+    background: linear-gradient(var(--back-color), var(--input-background-color));
 }
   
 .time {
@@ -122,6 +122,10 @@ input[type="text"] {
     border-radius: 8px;
 }
 
-.send_area {
-    background: var(--back-color);
+.bottom {
+    border-top: none;
+}
+
+.send_button {
+    background: linear-gradient(var(--back-color), var(--input-background-color));
 }
