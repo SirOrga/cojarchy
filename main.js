@@ -149,15 +149,6 @@ new class {
     template_item(template, destination) {
         let templet_item = document.querySelector(template).innerHTML
         let item = document.querySelector(destination).appendChild(document.createElement('div'))
-        
-
-
-        if (template.id == "room_item") {
-            let item = document.querySelector(destination).appendChild(document.createElement('li'))
-        }
-
-
-        
         item.classList.add(template.replace('#', '').replace('.', ''))
         item.innerHTML = templet_item
         return item
@@ -247,7 +238,7 @@ new class {
             time: "",
             nick: "",
             user: "cojarchy_client",
-            message: "<div  class='default_msg'><h3>HTML is not stripped. You're here at your own risks.</h3><br>Try sending messages with a h1 html tag !</div>"
+            message: "<div  class='default_msg'><h3>Welcome to <span id = 'defmsg_title'>Cojarchy</span></h3><br>Try sending messages with a h1 html tag !</div>"
         }
         if (!msg.message) return false
         room.messages.push(msg)
