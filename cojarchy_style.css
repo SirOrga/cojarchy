@@ -27,15 +27,25 @@
     */
   
   ::-webkit-scrollbar {
-    width: 6px;
+      width: 16px;
+      background: var(--back-color)
   }
   
   ::-webkit-scrollbar-track {
-      background: #63543d;
+      background: var(--back-color);
+      border: solid 1px var(--front-color);
+      border-right: none;
+      border-bottom: none;
+      border-top: none;
+      border-radius: 10px;
   }
   
   ::-webkit-scrollbar-thumb {
-    background: #aaa;
+      background: var(--back-color);
+      border: solid 1px var(--active-color);
+      border-radius: 10px;
+      border-left: none;
+      border-right: none;
   }
   
   ::-webkit-scrollbar-thumb:hover {
