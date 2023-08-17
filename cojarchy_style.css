@@ -33,23 +33,20 @@
   
   ::-webkit-scrollbar-track {
       background: var(--back-color);
-      border: solid 1px var(--front-color);
-      border-right: none;
-      border-bottom: none;
-      border-top: none;
-      border-radius: 10px;
+      border-left: solid 1px var(--front-color);
+      border-radius: 8px;
   }
   
   ::-webkit-scrollbar-thumb {
       background: var(--back-color);
-      border: solid 1px var(--active-color);
-      border-radius: 10px;
-      border-left: none;
+      border: solid 1px var(--front-color);
+      border-radius: 8px;
       border-right: none;
+      
   }
   
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--hover-backgound-color);
+    background: var(--front-color);
   }
   
   input,
