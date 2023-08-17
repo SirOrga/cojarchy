@@ -107,14 +107,14 @@ input[type="text"] {
 }
 
 .message_item:has(.default_msg) {
-    background: linear-gradient(var(--back-color) 75%, rgba(255,0,0,0));
+    background: linear-gradient(var(--back-color), var(--back-color) 85%,rgba(255,0,0,0) 120%);
     margin: 0px;
-    padding-bottom: 70px;
+    padding-top: 35px;
+    padding-bottom: 35px;
     border: none;
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    &:
 }
 .messages {
     scrollbar-width: thin;
