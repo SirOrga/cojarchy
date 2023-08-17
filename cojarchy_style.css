@@ -11,71 +11,74 @@
     --button-background-color: none;
     --input-color: #fff;
     --zoom-range: 18px;
-  }
-  /*
-    .command_usage {
-        color: var(--button-background);
-    }
+}
+/*
+.command_usage {
+    color: var(--button-background);
+}
     
     body {
         background-color: var(--modal-backgound);
-    }
+}
     ::placeholder {
       color: var(--border-color);
       font-family: monospace, monospace;
-    }
-    */
+}
+*/
   
-  ::-webkit-scrollbar {
+::-webkit-scrollbar {
       width: 16px;
       background: var(--back-color)
-  }
+}
   
-  ::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
       background: var(--back-color);
       border-left: solid 1px var(--front-color);
       border-radius: 8px;
-  }
+}
   
-  ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
       background: var(--back-color);
       border: solid 1px var(--front-color);
       border-radius: 8px;
       border-right: none;
       
-  }
+}
   
   ::-webkit-scrollbar-thumb:hover {
     background: var(--front-color);
-  }
+}
   
-  input,
-  input[type="text"] {
+input,
+input[type="text"] {
     color: var(--input-color);
-  }
+    background: var(--back-color);
+}
   
-  .time {
+.time {
     color: var(--input-background-color);
     float: right;
     padding-left: 5px;
-  }
+    font-size: 12px;
+}
   
-  .room_list {
+.room_list {
     text-align: center;
-  }
+}
   
-  .default_msg {
+.default_msg {
     color: var(--input-background-color);
     text-align: center;
     padding-bottom: 20px;
     border-radius: 5px;
     margin-bottom: 20px;
-  }
+}
 
-  #defmsg_title {
+#defmsg_title {
     color: var(--active-color);
-  }
-  .new_room {
+}
+
+.new_room {
     font-weight: normal;
     color: var(--back-color);
     background: var(--front-color);
@@ -83,19 +86,15 @@
     padding: 2px;
     padding-left: 20px;
     padding-right: 20px;
-  }
+}
   
-  .new_room:hover {
+.new_room:hover {
     font-weight: bold;
     background: var(--input-background-color);
     border-radius: 16px;
-  }
-  
-  .close:hover {
-    fill: #e3242b;
-  }
-  
-  .message_item {
+}
+
+.message_item {
     border: solid 1px var(--input-background-color);
     border-bottom: none;
     padding: 3px;
@@ -104,22 +103,25 @@
     word-wrap: break-word;
     margin: 5px;
     border-radius: 6px;
-  }
+}
   
-  .messages {
+.messages {
     scrollbar-width: thin;
     overflow-y: auto;
     height: calc(100% - 40px);
     padding: 0px;
     padding-bottom: 8px;
-  }
+}
   
-  .nick {
+.nick {
     color: var(--active-color);
     padding: 1px;
-  }
+}
   
-  .center {
+.center {
     border-radius: 8px;
-  }
-  
+}
+
+.send_area {
+    background: var(--back-color);
+}
