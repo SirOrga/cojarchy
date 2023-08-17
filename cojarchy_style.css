@@ -72,6 +72,7 @@ input[type="text"] {
     padding-bottom: 20px;
     border-radius: 5px;
     margin-bottom: 20px;
+
 }
 
 #defmsg_title {
@@ -104,7 +105,17 @@ input[type="text"] {
     margin: 5px;
     border-radius: 6px;
 }
-  
+
+.message_item:has(.default_msg) {
+    background: linear-gradient(var(--back-color) 75%, rgba(255,0,0,0));
+    margin: 0px;
+    padding-bottom: 70px;
+    border: none;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    &:
+}
 .messages {
     scrollbar-width: thin;
     overflow-y: auto;
