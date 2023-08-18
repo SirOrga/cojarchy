@@ -179,10 +179,10 @@ input {
     height: 100%;
     border: none;
     background: none;
-    color: var(--front-color);
+    color: var(--front-color);   
+    float: left;
 }
 
 .menu_button {
-    float: left;
     font-family: var(--font-family);
 }
