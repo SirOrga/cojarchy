@@ -170,3 +170,8 @@ input[type="color"] {
     float: right;
     width: 100px;
 }
+
+.message img{
+    width: 100%;
+    border-radius: 13px;
+}
