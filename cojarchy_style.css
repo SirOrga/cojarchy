@@ -1,11 +1,11 @@
 @font-face {
     font-family: 'custom-font'; /*a name to be used later*/
-    src: url('HolliesMonoline-Regular.otf'); /*URL to font*/
+    src: url('gg sans Regular.ttf'); /*URL to font*/
 }
 
 :root {
     color-scheme: dark;
-    --font-family: monospace;
+    --font-family: custom-font;
     --front-color: #8C7DA8;
     --active-color: #BBA6DD;
     --unread-color: #A0C5E3;
