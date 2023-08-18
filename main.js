@@ -396,7 +396,7 @@ new class {
     }
 }
 
-function playSound(url) {
+function playSound() {
     if (!document.hidden) {
         return false
     }
