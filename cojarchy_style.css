@@ -149,3 +149,19 @@ li:has(.new_room) {
     padding: 0px;
     margin: 0px;
 }
+
+.modal_content {
+    border-radius: 8px;
+}
+
+input[type="color"] {
+    float: right;
+    background: none;
+    border: none;
+}
+.settings_css_var {
+    padding: 1%;
+}
+.font-family {
+    padding: 15px;
+}
