@@ -5,13 +5,6 @@ new class {
         document.addEventListener('DOMContentLoaded', _ => {
             this.ws = new u_socket(this.auth_data, my_data => this.init(my_data))
             this.original_title = document.title
-            this.default_msg = {
-                time: this.time(),
-                nick: "Cojarchy",
-                user: "cojarchy_client",
-                message: "This client is different from Emuchat. Html is not stripped here, which may in some cases be dangerous. We are not responsible of anything. You're at your own risks"
-            }
-
             this.left_side_visible = true
             this.right_side_visible = true
             this.init_dom()
