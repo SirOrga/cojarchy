@@ -1,13 +1,13 @@
 :root {
     color-scheme: dark;
     --font-family: monospace, monospace;
-    --front-color: #8a8373;
-    --active-color: #b4b6b0;
-    --unread-color: #94b4bb;
-    --back-color: #261e13;
-    --modal-backgound-color: #261e13;
-    --hover-backgound-color: #352a1b;
-    --input-background-color: #63543d;
+    --front-color: #8C7DA8;
+    --active-color: #BBA6DD;
+    --unread-color: #A0C5E3;
+    --back-color: #1E2136;
+    --modal-backgound-color: #1E2136;
+    --hover-backgound-color: #64557B;
+    --input-background-color: #64557B;
     --button-background-color: none;
     --input-color: #fff;
     --zoom-range: 18px;
