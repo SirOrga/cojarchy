@@ -177,8 +177,12 @@ input {
 
 .version {
     height: 100%;
-    float: left;
     border: none;
     background: none;
-    color: var(--front-color)
+    color: var(--front-color);
+}
+
+.menu_button {
+    float: left;
+    font-family: var(--font-family);
 }
