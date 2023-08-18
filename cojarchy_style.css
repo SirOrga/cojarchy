@@ -46,6 +46,7 @@ html, body {
   
 input,
 input[type="text"] {
+    font-family: var(--font-family);
     background: var(--back-color);
     background: linear-gradient(var(--back-color), var(--input-background-color));
 }
@@ -54,7 +55,7 @@ input[type="text"] {
     color: var(--input-background-color);
     float: right;
     padding-left: 5px;
-    font-size: 70%;
+    font-size: 12px;
 }
   
 .room_list {
@@ -162,8 +163,7 @@ input[type="color"] {
     height: 25px
 }
 .settings_css_var {
-    padding: 1%;
-    margin: 5px;
+    margin-top: 5px
 }
 .font-family {
     float: right;
@@ -172,7 +172,6 @@ input[type="color"] {
 input.nick {
     float: right;
     width: 100px;
-    margin: 5px;
 }
 
 input {
