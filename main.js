@@ -211,6 +211,9 @@ new class {
     }
 
     render_room(room) {
+        var audio = new Audio('future-high-tech-logo-158838.mp3');
+        audio.play();
+
         this.dom.room_name.innerHTML = this.room.name
         this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
 
