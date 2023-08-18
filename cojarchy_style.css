@@ -162,7 +162,11 @@ input[type="color"] {
 .settings_css_var {
     padding: 1%;
 }
-input[type="text"] {
+.font-family {
+    float: right;
+    width: 100px;
+}
+.nick {
     float: right;
     width: 100px;
 }
