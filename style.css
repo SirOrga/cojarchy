@@ -208,11 +208,6 @@ button:hover {
     opacity: 0.8;
 }
 
-.menu_button {
-    float: center;
-    margin-right: 1px;
-}
-
 .room_item {
     overflow: hidden;
     font-size: calc(var(--zoom-range) + 2px);

@@ -189,6 +189,9 @@ input {
 
 .menu_button {
     font-family: var(--font-family);
+    &:hover {
+        color: var(--hover-backgound-color);
+    }
 }
 hr {
     margin-top: 16px;
