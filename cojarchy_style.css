@@ -5,7 +5,7 @@
 
 :root {
     color-scheme: dark;
-    --font-family: custom-font;
+    --font-family: monospace;
     --front-color: #8C7DA8;
     --active-color: #BBA6DD;
     --unread-color: #A0C5E3;
@@ -14,8 +14,7 @@
     --hover-backgound-color: #64557B;
     --input-background-color: #64557B;
     --button-background-color: none;
-    --input-color: #fff;
-    --zoom-range: 18px;
+    --input-color:20px;
 }
 
 html, body {
