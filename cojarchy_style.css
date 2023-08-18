@@ -46,7 +46,6 @@ html, body {
   
 input,
 input[type="text"] {
-    font-family: var(--font-family);
     background: var(--back-color);
     background: linear-gradient(var(--back-color), var(--input-background-color));
 }
@@ -55,7 +54,7 @@ input[type="text"] {
     color: var(--input-background-color);
     float: right;
     padding-left: 5px;
-    font-size: 12px;
+    font-size: 70%;
 }
   
 .room_list {
