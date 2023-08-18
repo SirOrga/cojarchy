@@ -140,6 +140,7 @@ button {
 }
 
 .send_button {
+    border-radius: 0;
     background: linear-gradient(var(--back-color), var(--input-background-color));
 }
 
