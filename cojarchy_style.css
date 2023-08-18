@@ -51,7 +51,10 @@ input[type="text"] {
     background: var(--back-color);
     background: linear-gradient(var(--back-color), var(--input-background-color));
 }
-  
+
+button {
+    border-radius: 14px;
+}
 .time {
     color: var(--input-background-color);
     float: right;
@@ -154,6 +157,7 @@ li:has(.new_room) {
 .modal_content {
     width: 300px;
     border-radius: 8px;
+    text-align: center;
 }
 
 input[type="color"] {
@@ -164,6 +168,7 @@ input[type="color"] {
     height: 25px
 }
 .settings_css_var {
+    text-align: left;
     margin-top: 5px
 }
 .font-family {
