@@ -1,11 +1,11 @@
 @font-face {
-    font-family: 'market-deco'; /*a name to be used later*/
+    font-family: 'custom-font'; /*a name to be used later*/
     src: url('Market_Deco.ttf'); /*URL to font*/
 }
 
 :root {
     color-scheme: dark;
-    --font-family: 'market-deco';
+    --font-family: monospace;
     --front-color: #8C7DA8;
     --active-color: #BBA6DD;
     --unread-color: #A0C5E3;
@@ -17,20 +17,11 @@
     --input-color: #fff;
     --zoom-range: 18px;
 }
-/*
-.command_usage {
-    color: var(--button-background);
+
+html, body {
+    font-family: var(--font-family);
 }
-    
-    body {
-        background-color: var(--modal-backgound);
-}
-    ::placeholder {
-      color: var(--border-color);
-      font-family: monospace, monospace;
-}
-*/
-  
+
 ::-webkit-scrollbar {
       width: 16px;
       background: var(--back-color)
