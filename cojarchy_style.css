@@ -177,4 +177,8 @@ input {
 
 .version {
     height: 100%;
+    float: left;
+    border: none;
+    background: none;
+    color: var(--front-color)
 }
