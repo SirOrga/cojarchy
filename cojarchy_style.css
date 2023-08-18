@@ -168,14 +168,16 @@ input[type="color"] {
 }
 .settings_css_var {
     padding: 1%;
+    margin: 5px;
 }
 .font-family {
     float: right;
     width: 100px;
 }
-input:has(.nick) {
+input.nick {
     float: right;
     width: 100px;
+    margin: 5px;
 }
 
 input {
@@ -194,5 +196,5 @@ input {
     font-family: var(--font-family);
 }
 hr {
-    margin-top: 10px;
+    margin-top: 16px;
 }
