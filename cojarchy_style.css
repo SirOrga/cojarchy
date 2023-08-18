@@ -1,6 +1,11 @@
+@font-face {
+    font-family: 'market-deco'; /*a name to be used later*/
+    src: url('https://gaberyal.github.io/cojarchy/Market_Deco.ttf'); /*URL to font*/
+}
+
 :root {
     color-scheme: dark;
-    --font-family: monospace, monospace;
+    --font-family: 'market-deco';
     --front-color: #8C7DA8;
     --active-color: #BBA6DD;
     --unread-color: #A0C5E3;
