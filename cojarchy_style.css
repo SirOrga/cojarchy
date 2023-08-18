@@ -166,7 +166,7 @@ input[type="color"] {
     float: right;
     width: 100px;
 }
-.nick {
+.input:has(.nick) {
     float: right;
     width: 100px;
 }
