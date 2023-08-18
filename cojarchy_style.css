@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'market-deco'; /*a name to be used later*/
-    src: url('https://gaberyal.github.io/cojarchy/Market_Deco.ttf'); /*URL to font*/
+    src: url('Market_Deco.ttf'); /*URL to font*/
 }
 
 :root {
