@@ -81,18 +81,12 @@ input[type="text"] {
 
 .new_room {
     font-weight: normal;
-    color: var(--back-color);
-    background: var(--front-color);
-    border-radius: 16px;
-    padding: 2px;
-    padding-left: 20px;
-    padding-right: 20px;
+    color: var(--active-color);
+    background: none;
 }
   
 .new_room:hover {
-    font-weight: bold;
-    background: var(--input-background-color);
-    border-radius: 16px;
+    color: var(--front-color);
 }
 
 .message_item {
@@ -137,6 +131,21 @@ input[type="text"] {
     border-top: none;
 }
 
+.left {
+    margin: 0px;
+}
 .send_button {
     background: linear-gradient(var(--back-color), var(--input-background-color));
+}
+
+li:has(.new_room) {
+    border-bottom: solid 1px;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+.room_list, .user_list {
+    border-top: none;
+    padding: 0px;
+    margin: 0px;
 }
