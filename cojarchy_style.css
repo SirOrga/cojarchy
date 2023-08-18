@@ -166,12 +166,11 @@ input[type="color"] {
     float: right;
     width: 100px;
 }
-.input:has(.nick) {
+input:has(.nick) {
     float: right;
     width: 100px;
 }
 
-.message img{
-    width: 100%;
-    border-radius: 13px;
+input {
+    border-radius: 3px;
 }
