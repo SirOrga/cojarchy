@@ -174,3 +174,7 @@ input:has(.nick) {
 input {
     border-radius: 3px;
 }
+
+.version {
+    height: 100%;
+}

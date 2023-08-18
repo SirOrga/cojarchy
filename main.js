@@ -55,6 +55,9 @@ new class {
             this.right_side_visible = (this.right_side_visible) ? false : true
             this.render_grid()
         }
+        document.querySelector('.version').onchange = (e) => {
+            location.href = e.target.selectedOptions[0].value
+        }
         this.disable_autocomplete()
         this.render_grid()
     }
