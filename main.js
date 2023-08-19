@@ -28,6 +28,7 @@ new class {
         })
 
         document.querySelector('.send_button').addEventListener('click', k => this.send_message())
+
         window.onblur = () => this.background = true
         window.onfocus = () => {
             this.background = false
@@ -300,6 +301,32 @@ new class {
         return true
     }
 
+    send_sticker(sticker_id) {
+        let msg = `<img src=${sticker_id}>`
+        if (!msg) return
+        if (msg.charAt(0) === '/') {
+            const short_cuts = {
+                '/j': '/join',
+                '/l': '/leave',
+                '/n': '/nick',
+            }
+            Object.keys(short_cuts).map(k => msg = msg.replace(`${k} `, `${short_cuts[k]} `))
+            msg = msg.substring(1).split(' ')
+            let cmd = msg.shift()
+            msg = msg.join(' ')
+
+            if (Object.values(short_cuts).find(v => v === `/${cmd}`)) {
+                this.ws.signal(cmd, msg)
+            }
+            else if (this.room) {
+                this.room.send(cmd, msg)
+            }
+        } else {
+            if (!this.room) return false
+        }
+        return true
+    }
+
     init(data) {
         this.dom.send_area.placeholder = `You are typing as "${this.ws.me.nick}"`
         this.main()
@@ -392,6 +419,14 @@ new class {
             this.ws.signal('join', room_name.value)
             this.close_modal()
         }
+    }
+
+    stickers_modal(modal) {
+        let sticker_button = modal.querySelector('.sticker_button')
+        sticker_button.addEventListener('click', k => {
+            this.send_sticker(this.id)
+            this.close_modal()
+        })
     }
 }
 
