@@ -200,6 +200,29 @@ new class {
                 }, 500)
             }
         })
+        room.on('sticker', (data, user) => {
+            let msg = {
+                time: this.time(),
+                nick: user.nick,
+                user: user.id,
+                message: `<img src='${data.toString()}.png'>`
+            }
+            if (!msg.message) return false
+            room.messages.push(msg)
+            if (this.room?.name === room.name) this.render_message(msg)
+            else {
+                let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
+                room.unread = true
+                if (r) r.style.color = "var(--unread-color)"
+            }
+            if (this.background) {
+                clearInterval(this.blink_title)
+                this.blink_title = setInterval(() => {
+                    if (document.title === this.original_title) document.title = 'New message'
+                    else document.title = this.original_title
+                }, 500)
+            }
+        })
         room.messages = []
         document.querySelector('.messages').innerHTML = ''
         let old_room = document.querySelector(`#room-${this.format_id(this.room?.name)}`)
