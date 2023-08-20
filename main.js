@@ -441,7 +441,7 @@ new class {
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
             e.addEventListener('click',()=>{
             if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('datasticker'))
-            this.close_modal()
+            this.close_modal()d
             }) 
         })
     }
