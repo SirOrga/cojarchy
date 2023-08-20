@@ -422,9 +422,20 @@ new class {
     }
 
     stickers_modal(modal) {
+        this.stickers.map(s, index =>{
+            var btn = modal.createElement("button")
+            var img = modal.createElement("img")
+            btn.dataSticker = index
+            btn.class = "sticker_button"
+            img.class = "sticker-preview"
+            img.src = s[parseInt(index)]
+            modal.querySelector('.stickers_modal_header').appendChild(btn);
+            modal.querySelector('.sticker_button').appendChild(img);
+        })
+
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
             e.addEventListener('click',()=>{
-            if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('data-sticker'))
+            if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('dataSticker'))
             this.close_modal()
             }) 
         })
