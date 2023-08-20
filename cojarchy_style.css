@@ -226,7 +226,7 @@ img {
         width: 15%;
     }
     &.sticker-preview {
-        width: 35px;
+        width: 50px;
         border: none;
     }
 }

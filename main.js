@@ -432,7 +432,7 @@ new class {
             img.classList.add('sticker-preview');
 
             btn.appendChild(img);
-            modal.querySelector('.stickers_modal_header').appendChild(btn);
+            modal.querySelector('#stickers_modal_body').appendChild(btn);
             
         })
 
