@@ -127,7 +127,7 @@ button {
 }
   
 .nick {
-    color: var(--active-color);
+    color: var(--input-background-color);
     padding: 1px;
 }
   
