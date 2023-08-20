@@ -218,5 +218,8 @@ img {
     &.sticker {
         width: 15%;
     }
+    &.sticker-preview {
+        width: 20px;
+    }
 }
 
