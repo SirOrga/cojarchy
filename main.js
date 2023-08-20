@@ -423,9 +423,10 @@ new class {
     }
 
     stickers_modal(modal) {
-        let sticker_button = modal.querySelector('.sticker_button')
-        sticker_button.addEventListener('click', k => {
-            this.ws.send('sticker', this.id)
+        Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
+            e.ddEventListener('click',()=>{
+            this.ws.send('sticker',e.getAttribute('data-sticker'))
+            }) 
             this.close_modal()
         })
     }
