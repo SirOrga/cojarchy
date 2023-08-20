@@ -33,9 +33,9 @@
             </div>
             <div>
                 Stickers library
-                <button class = "sticker_button" id = "happy"> happy </button>
-                <button class = "sticker_button" id = "sad"> sad </button>
-                <button class = "sticker_button" id = "hello"> funny </button>
+                <button class = "sticker_button" id = "happy" onclick="this.ws.send('sticker', 'happy')"> Happy </button>
+                <button class = "sticker_button" id = "sad" onclick="this.ws.send('sticker', 'sad')"> Sad </button>
+                <button class = "sticker_button" id = "hello" onclick="this.ws.send('sticker', 'hello')"> Hello </button>
                 <button class = "sticker_button" id = "angry"> angry </button>
             </div>
         </template> 
