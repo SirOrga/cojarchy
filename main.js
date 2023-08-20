@@ -423,8 +423,8 @@ new class {
 
     stickers_modal(modal) {
         this.stickers.map((s, index) =>{
-            var btn = modal.createElement("button")
-            var img = modal.createElement("img")
+            var btn = document.createElement("button")
+            var img = document.createElement("img")
             btn.dataSticker = index
             btn.class = "sticker_button"
             img.class = "sticker-preview"
