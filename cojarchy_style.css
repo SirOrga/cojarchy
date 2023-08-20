@@ -165,8 +165,10 @@ li:has(.new_room) {
 }
 .modal_content {
     width: 300px;
+    max-height: 630px;
     border-radius: 8px;
     text-align: center;
+    overflow:auto;
 }
 
 input[type="color"] {
