@@ -200,10 +200,11 @@ input {
     border: none;
     background: none;
     color: var(--front-color);   
-    float: left;
+    float: right;
 }
 
 .menu_button {
+    margin-left: 10;
     font-family: var(--font-family);
     padding-top: 4px;
     &:hover {
