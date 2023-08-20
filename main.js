@@ -302,7 +302,7 @@ new class {
     }
 
     send_sticker(sticker_id) {
-        let msg = `<img src=${sticker_id}>`
+        let msg = `<img src=${sticker_id}.png>`
         if (!msg) return
         if (msg.charAt(0) === '/') {
             const short_cuts = {
