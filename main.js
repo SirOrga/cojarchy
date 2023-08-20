@@ -323,7 +323,6 @@ new class {
                 else document.title = this.original_title
             }, 500)
         }
-    })
     }
 
     init(data) {
