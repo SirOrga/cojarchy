@@ -55,7 +55,7 @@ input[type="text"] {
 button {
     border-radius: 14px;
 
-    &.sticker-button {
+    &.sticker_button {
         border: none;
     }
 }
