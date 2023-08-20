@@ -54,6 +54,10 @@ input[type="text"] {
 
 button {
     border-radius: 14px;
+
+    &:has(img.sticker_preview) {
+        border: none;
+    }
 }
 .time {
     color: var(--input-background-color);
