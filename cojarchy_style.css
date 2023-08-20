@@ -195,6 +195,7 @@ input {
 
 .menu_button {
     font-family: var(--font-family);
+    padding-top: 4px;
     &:hover {
         color: var(--hover-backgound-color);
     }
