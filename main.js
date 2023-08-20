@@ -31,7 +31,6 @@ new class {
         })
 
         document.querySelector('.send_button').addEventListener('click', k => this.send_message())
-        document.querySelector('.sticker_button').addEventListener('click', k => this.ws.signal(this.id))
 
         window.onblur = () => this.background = true
         window.onfocus = () => {
