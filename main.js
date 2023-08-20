@@ -426,7 +426,7 @@ new class {
             var img = document.createElement("img")
             var btn = document.createElement("button")
             btn.classList.add('sticker-button');
-            btn.setAttribute('dataSticker', index);
+            btn.setAttribute('datasticker', index);
 
             img.src = s
             img.classList.add('sticker-preview');
@@ -438,7 +438,7 @@ new class {
 
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
             e.addEventListener('click',()=>{
-            if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('dataSticker'))
+            if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('datasticker'))
             this.close_modal()
             }) 
         })
