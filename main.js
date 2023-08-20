@@ -208,7 +208,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: `<img src='${this.stickers[parseInt(data)]}' class = 'sticker'>`
+                message: `<img src='images/stickers/${this.stickers[parseInt(data)]}' class = 'sticker'>`
             }
             if (!msg.message) return false
             room.messages.push(msg)
@@ -439,7 +439,7 @@ new class {
 
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
             e.addEventListener('click',()=>{
-            if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('datasticker'))
+            if (!this?.room?.send('a','b')) alert('You are not in any room!'); else this.room.send('sticker',e.getAttribute('datasticker'))
             this.close_modal()
             }) 
         })
