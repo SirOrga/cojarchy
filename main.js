@@ -424,10 +424,16 @@ new class {
     stickers_modal(modal) {
         this.stickers.map((s, index) =>{
             var img = document.createElement("img")
+            var btn = document.createElement("button")
+            btn.classList.add('sticker-button');
+            btn.setAttribute('dataSticker', index);
+
             img.src = s
-            img.classList.add('sticker-button', 'sticker-preview');
-            img.setAttribute('dataSticker', index);
-            modal.querySelector('.stickers_modal_header').appendChild(img);
+            img.classList.add('sticker-preview');
+
+            btn.appendChild(img);
+            modal.querySelector('.stickers_modal_header').appendChild(btn);
+            
         })
 
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
