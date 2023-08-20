@@ -31,6 +31,7 @@ new class {
         })
 
         document.querySelector('.send_button').addEventListener('click', k => this.send_message())
+        document.querySelector('.sticker_button').addEventListener('click', k => this.ws.signal(this.id))
 
         window.onblur = () => this.background = true
         window.onfocus = () => {
@@ -208,7 +209,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: `<img src='${this.stickers[parseInt(data.toString())]}'>`
+                message: `<img src='${this.stickers[data]}'>`
             }
             if (!msg.message) return false
             room.messages.push(msg)
@@ -233,7 +234,7 @@ new class {
         this.room = room
         this.render_room(room)
         this.render_users()
-        this.ws.signal('join', "cojarchy")
+        this.ws.signal('join', "Cojarchy")
     }
 
     render_room(room) {
@@ -424,7 +425,7 @@ new class {
     stickers_modal(modal) {
         let sticker_button = modal.querySelector('.sticker_button')
         sticker_button.addEventListener('click', k => {
-            this.send_sticker(this.id)
+            this.ws.signal('sticker', this.id)
             this.close_modal()
         })
     }
