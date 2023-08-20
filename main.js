@@ -208,7 +208,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: `<img src='${this.stickers[parseInt(data)]}'>`
+                message: `<img src='${this.stickers[parseInt(data)]}' class = 'sticker'>`
             }
             if (!msg.message) return false
             room.messages.push(msg)
