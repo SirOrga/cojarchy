@@ -110,6 +110,10 @@ button {
     position: sticky;
     top: 0;
 }
+.message_item:has(.sticker) {
+    border: none;
+}
+
 .messages {
     scrollbar-width: thin;
     overflow-y: auto;
@@ -210,4 +214,9 @@ img {
     margin-right: auto;
     width: 30%;
     border-radius: 8px;
+
+    &.sticker {
+        width: 15%;
+    }
 }
+
