@@ -426,9 +426,8 @@ new class {
             var img = document.createElement("img")
             var btn = document.createElement("button")
             btn.classList.add('sticker_button');
+            btn.setAttribute('datasticker', index);
             btn.title = s.slice(0, -4);
-            btn.setAttribute('datasticker', btn.title);
-            
 
             img.src = s
             img.classList.add('sticker-preview');
@@ -441,7 +440,7 @@ new class {
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
             e.addEventListener('click',()=>{
             if (!this?.room?.send('a','b')) alert('Problem'); else this.room.send('sticker',e.getAttribute('datasticker'))
-            this.close_modal()d
+            this.close_modal()
             }) 
         })
     }
@@ -451,4 +450,3 @@ function playSound() {
     const audio = new Audio("future-high-tech-logo-158838.mp3");
     audio.play();
 }
-
