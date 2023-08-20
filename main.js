@@ -427,6 +427,7 @@ new class {
             var btn = document.createElement("button")
             btn.classList.add('sticker_button');
             btn.setAttribute('datasticker', index);
+            btn.title = s.slice(0, -4);
 
             img.src = s
             img.classList.add('sticker-preview');
