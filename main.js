@@ -425,7 +425,7 @@ new class {
     stickers_modal(modal) {
         let sticker_button = modal.querySelector('.sticker_button')
         sticker_button.addEventListener('click', k => {
-            this.ws.signal('sticker', this.id)
+            this.ws.send('sticker', this.id)
             this.close_modal()
         })
     }
