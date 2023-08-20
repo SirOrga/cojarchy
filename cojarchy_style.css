@@ -223,7 +223,8 @@ img {
         width: 15%;
     }
     &.sticker-preview {
-        width: 20px;
+        width: 30px;
+        border: none;
     }
 }
 
