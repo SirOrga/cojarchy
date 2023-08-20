@@ -12,6 +12,9 @@ new class {
 
             this.ws.connect()
         })
+
+        this.stickers = ["happy.png","hello.gif","sad.gif"]
+
     }
 
     init_dom() {
@@ -205,7 +208,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: `<img src='${data.toString()}.gif'>`
+                message: `<img src='${this.stickers[parseInt(data.toString())]}'>`
             }
             if (!msg.message) return false
             room.messages.push(msg)
@@ -322,32 +325,6 @@ new class {
             if (this.room.send('msg', msg)) this.dom.send_area.value = ''
         }
         return true
-    }
-
-    send_sticker(sticker_id) {
-        let msg = {
-            time: "",
-            nick: "",
-            user: "c",
-            message: `<img src='https://i.pinimg.com/originals/cf/19/7b/cf197b2ed0cff75851af5e746e3c729d.png'> <img src='${sticker_id}.png'>`
-        }
-        if (!msg.message) return false
-        let room = this.ws.rooms.get(data.room)
-        if (!room) return false
-        room.messages.push(msg)
-        if (this.room?.name === room.name) this.render_message(msg)
-        else {
-            let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
-            room.unread = true
-            if (r) r.style.color = "var(--unread-color)"
-        }
-        if (this.background) {
-            clearInterval(this.blink_title)
-            this.blink_title = setInterval(() => {
-                if (document.title === this.original_title) document.title = 'New message'
-                else document.title = this.original_title
-            }, 500)
-        }
     }
 
     init(data) {
