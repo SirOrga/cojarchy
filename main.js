@@ -309,6 +309,8 @@ new class {
             message: `<img src='https://i.pinimg.com/originals/cf/19/7b/cf197b2ed0cff75851af5e746e3c729d.png'> <img src='${sticker_id}.png'>`
         }
         if (!msg.message) return false
+        let room = this.ws.rooms.get(data.room)
+        if (!room) return false
         room.messages.push(msg)
         if (this.room?.name === room.name) this.render_message(msg)
         else {
