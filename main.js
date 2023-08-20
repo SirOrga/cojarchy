@@ -13,7 +13,7 @@ new class {
             this.ws.connect()
         })
 
-        this.stickers = ["happy.png","hello.gif","sad.gif","eating.gif","sorry.gif","sleeping.gif","wow.gif","exhale.gif","nomnom.gif"]
+        this.stickers = ["happy.png","hello.gif","sad.gif","eating.gif","sorry.gif","sleeping.gif","wow.gif","exhale.gif","nomnom.gif","skull_1.gif","skull_2.gif","skull_1.gif","skull_2.gif", "joy_1.gif","dab_1.gif","thinking_1.gif","sleeping_1.gif","anger_1.gif","sad_2.gif","cry_1.gif","cry_2.gif","hot_1.gif","thinking_2.gif","flirt_1.gif","melting_1.gif","awkward_1.gif","ish_1.gif","love_1.gif"]
 
     }
 
