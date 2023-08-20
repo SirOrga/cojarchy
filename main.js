@@ -205,7 +205,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: `<img src='${data.toString()}.png'>`
+                message: `<img src='${data.toString()}.gif'>`
             }
             if (!msg.message) return false
             room.messages.push(msg)
