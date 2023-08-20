@@ -424,7 +424,7 @@ new class {
     stickers_modal(modal) {
         Array.from(modal.querySelectorAll('.sticker_button')).map(e =>{
             e.addEventListener('click',()=>{
-            this.ws.send('sticker',e.getAttribute('data-sticker'))
+            this.room.send('sticker',e.getAttribute('data-sticker'))
             this.close_modal()
             }) 
         })
