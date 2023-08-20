@@ -428,7 +428,7 @@ new class {
             btn.dataSticker = index
             btn.class = "sticker_button"
             img.class = "sticker-preview"
-            img.src = s[parseInt(index)]
+            img.src = s
             modal.querySelector('.stickers_modal_header').appendChild(btn);
             modal.querySelector('.sticker_button').appendChild(img);
         })
