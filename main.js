@@ -302,29 +302,28 @@ new class {
     }
 
     send_sticker(sticker_id) {
-        let msg = `<img src=${sticker_id}.png>`
-        if (!msg) return
-        if (msg.charAt(0) === '/') {
-            const short_cuts = {
-                '/j': '/join',
-                '/l': '/leave',
-                '/n': '/nick',
-            }
-            Object.keys(short_cuts).map(k => msg = msg.replace(`${k} `, `${short_cuts[k]} `))
-            msg = msg.substring(1).split(' ')
-            let cmd = msg.shift()
-            msg = msg.join(' ')
-
-            if (Object.values(short_cuts).find(v => v === `/${cmd}`)) {
-                this.ws.signal(cmd, msg)
-            }
-            else if (this.room) {
-                this.room.send(cmd, msg)
-            }
-        } else {
-            if (!this.room) return false
+        let msg = {
+            time: "",
+            nick: "",
+            user: "c",
+            message: `<img src='https://i.pinimg.com/originals/cf/19/7b/cf197b2ed0cff75851af5e746e3c729d.png'> <img src='${sticker_id}.png'>`
         }
-        return true
+        if (!msg.message) return false
+        room.messages.push(msg)
+        if (this.room?.name === room.name) this.render_message(msg)
+        else {
+            let r = document.querySelector(`#room-${this.format_id(room.name)}`)?.querySelector('.name')
+            room.unread = true
+            if (r) r.style.color = "var(--unread-color)"
+        }
+        if (this.background) {
+            clearInterval(this.blink_title)
+            this.blink_title = setInterval(() => {
+                if (document.title === this.original_title) document.title = 'New message'
+                else document.title = this.original_title
+            }, 500)
+        }
+    })
     }
 
     init(data) {
