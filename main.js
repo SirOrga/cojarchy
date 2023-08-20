@@ -425,7 +425,7 @@ new class {
         this.stickers.map((s, index) =>{
             var img = document.createElement("img")
             var btn = document.createElement("button")
-            btn.classList.add('sticker-button');
+            btn.classList.add('sticker_button');
             btn.setAttribute('datasticker', index);
 
             img.src = s
