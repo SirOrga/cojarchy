@@ -377,8 +377,8 @@ new class {
             clearTimeout(modal.nick_change_timeout)
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
+            localStorage.setItem('userNick', new_nick)
         }
-        localStorage.setItem('userNick', new_nick)
         nick.onchange = () => nick_change()
         nick.addEventListener('keyup', () => nick_change())
         //--css vars
