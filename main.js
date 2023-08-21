@@ -208,7 +208,7 @@ new class {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: `<img src='media/images/stickers/${this.stickers[parseInt(data)]}' class = 'sticker'>`
+                message: `<img src='media/stickers/${this.stickers[parseInt(data)]}' class = 'sticker'>`
             }
             if (!msg.message) return false
             room.messages.push(msg)
@@ -439,7 +439,7 @@ new class {
             btn.setAttribute('datasticker', index);
             btn.title = s.slice(0, -4);
 
-            img.src = `media/images/stickers/${s}`
+            img.src = `media/stickers/${s}`
             img.classList.add('sticker-preview');
 
             btn.appendChild(img);
