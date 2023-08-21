@@ -60,7 +60,7 @@ button {
     }
 }
 .time {
-    color: var(--input-background-color);
+    color: var(--back-color);
     float: right;
     padding-left: 5px;
     font-size: 12px;
@@ -102,6 +102,13 @@ button {
     word-wrap: break-word;
     margin: 5px;
     border-radius: 6px;
+
+    &:hover {
+        opacity: 0.7;
+        .time {
+            color: var(--input-background-color);
+        }
+    }
 }
 
 .message_item:has(.default_msg) {
