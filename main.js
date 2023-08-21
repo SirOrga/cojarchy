@@ -235,10 +235,10 @@ new class {
         this.render_users()
         console.log(localStorage)
         if (!localStorage.getItem(('userNick'))) {
-            user_nick = "Cojarchy User"
+            let user_nick = "Cojarchy User"
         }
         else {
-            user_nick = localStorage.getItem('userNick')
+            let user_nick = localStorage.getItem('userNick')
             this.ws.signal('nick', user_nick)
         }
 
