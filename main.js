@@ -233,14 +233,16 @@ new class {
         this.room = room
         this.render_room(room)
         this.render_users()
-        this.ws.signal('join', "Cojarchy")
         console.log(localStorage)
         if (!localStorage.getItem(('userNick'))) {
             user_nick = "Cojarchy User"
         }
         else {
-            this.ws.signal('nick', localStorage.getItem('userNick'))
+            user_nick = localStorage.getItem('userNick')
+            this.ws.signal('nick', user_nick)
         }
+
+        this.ws.signal('join', "Cojarchy")
         
     }
 
