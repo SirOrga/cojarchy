@@ -235,7 +235,7 @@ new class {
         this.render_users()
         this.ws.signal('join', "Cojarchy")
         console.log(localStorage)
-        this.ws.signal('nick', 'mhm')
+        this.ws.signal('nick', localStorage.getItem('userNick'))
     }
 
     render_room(room) {
