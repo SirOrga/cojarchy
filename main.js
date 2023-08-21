@@ -439,7 +439,7 @@ new class {
             btn.setAttribute('datasticker', index);
             btn.title = s.slice(0, -4);
 
-            img.src = `media/images/stickers/{s}`
+            img.src = `media/images/stickers/${s}`
             img.classList.add('sticker-preview');
 
             btn.appendChild(img);
