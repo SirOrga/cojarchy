@@ -1,6 +1,6 @@
 @font-face {
-    font-family: 'media/fonts/custom-font'; /*a name to be used later*/
-    src: url('gg sans Regular.ttf'); /*URL to font*/
+    font-family: 'custom-font'; /*a name to be used later*/
+    src: url('media/fonts/gg sans Regular.ttf'); /*URL to font*/
 }
 
 :root {
