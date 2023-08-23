@@ -6,13 +6,13 @@
 :root {
     color-scheme: dark;
     --font-family: custom-font;
-    --front-color: #8C7DA8;
-    --active-color: #BBA6DD;
-    --unread-color: #A0C5E3;
-    --back-color: #1E2136;
-    --modal-backgound-color: #1E2136;
+    --front-color: #9aa0a6;
+    --active-color: #e8eaed;
+    --unread-color: #6b99d0;
+    --back-color: #202124;
+    --modal-backgound-color: #202124;
     --hover-backgound-color: #64557B;
-    --input-background-color: #64557B;
+    --input-background-color: #35363a;
     --button-background-color: none;
     --input-color:20px;
 }
