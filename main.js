@@ -121,14 +121,14 @@ new class {
             if (data.room === this.room?.name) {
                 this.render_user(data.user)
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                sendMessage(`${data.user.nick} joined ${data.room}`)
+                sendMessage(`${data.user.nick} joined ${this.room.name}`)
             }
         })
         this.ws.on('room.leave', data => {
             if (data.room === this.room?.name) {
                 document.querySelector(`#user-${data.user}`)?.remove()
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                sendMessage(`${data.user.nick} left ${data.room}`)
+                sendMessage(`${data.user.nick} left ${this.room.name}`)
             }
         })
         this.ws.on('room.left', room_name => this.remove_room(room_name))
