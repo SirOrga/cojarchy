@@ -128,6 +128,7 @@ new class {
             if (data.room === this.room?.name) {
                 document.querySelector(`#user-${data.user}`)?.remove()
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
+                sendMessage(`${data.user.nick} left ${data.room}`)
             }
         })
         this.ws.on('room.left', room_name => this.remove_room(room_name))
@@ -387,6 +388,7 @@ new class {
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
             localStorage.setItem('userNick', new_nick)
+            sendMessage(`${nick} changed his name to ${new_nick}`)
         }
         nick.onchange = () => nick_change()
         nick.addEventListener('keyup', () => nick_change())
