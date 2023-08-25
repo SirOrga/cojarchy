@@ -121,7 +121,7 @@ new class {
             if (data.room === this.room?.name) {
                 this.render_user(data.user)
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                sendMessage(`${data.user.nick} joined ${data.room.name}`)
+                sendMessage(`${data.user.nick} joined ${data.room}`)
             }
         })
         this.ws.on('room.leave', data => {
