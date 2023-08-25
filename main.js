@@ -382,17 +382,17 @@ new class {
 
     settings_modal(modal) {
         let nick = modal.querySelector('.nick')
-        var old_nick = this.ws.me.nick
+        let old_nick = this.ws.me.nick
         console.log(old_nick)
         nick.value = this.ws.me.nick
         let nick_change = () => {
             clearTimeout(modal.nick_change_timeout)
-            var new_nick = nick.value
+            let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
             localStorage.setItem('userNick', new_nick)
         }
         
-        nick.onchange = () => nick_change(); sendMessage(`${old_nick} changed his name to ${new_nick}`)
+        nick.onchange = () => nick_change(); sendMessage(`${old_nick} changed his name to ${nick.value}`)
         nick.addEventListener('keyup', () => nick_change())
         //--css vars
         modal.appendChild(document.createElement('hr'))
