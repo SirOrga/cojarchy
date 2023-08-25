@@ -390,9 +390,10 @@ new class {
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
             localStorage.setItem('userNick', new_nick)
+            sendMessage(`${old_nick} changed his name to ${new_nick}`)
         }
         
-        nick.onchange = () => nick_change(); sendMessage(`${old_nick} changed his name to ${nick.value}`)
+        nick.onchange = () => nick_change()
         nick.addEventListener('keyup', () => nick_change())
         //--css vars
         modal.appendChild(document.createElement('hr'))
