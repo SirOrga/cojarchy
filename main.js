@@ -382,7 +382,7 @@ new class {
 
     settings_modal(modal) {
         let nick = modal.querySelector('.nick')
-        old_nick = this.ws.me.nick
+        let old_nick = this.ws.me.nick
         console.log(old_nick)
         nick.value = this.ws.me.nick
         let nick_change = () => {
