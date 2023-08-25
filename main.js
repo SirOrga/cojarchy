@@ -120,7 +120,7 @@ new class{
             if (data.room === this.room?.name) {
                 this.render_user(data.user)
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                sendLogs(`${data.user.nick} joined ${this.room.name}`, this.room)
+                this.sendLogs(`${data.user.nick} joined ${this.room.name}`, this.room)
                 console.log(data.rooms, this.rooms)
             }
         })
@@ -128,7 +128,7 @@ new class{
             if (data.room === this.room?.name) {
                 document.querySelector(`#user-${data.user}`)?.remove()
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                sendLogs(`${data.user.nick} left ${this.room.name}`, this.room)
+                this.sendLogs(`${data.user.nick} left ${this.room.name}`, this.room)
             }
         })
         this.ws.on('room.left', room_name => this.remove_room(room_name))
@@ -390,7 +390,7 @@ new class{
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
             localStorage.setItem('userNick', new_nick)
-            sendLogs(`${old_nick} changed his name to ${new_nick}`, this.room)
+            this.sendLogs(`${old_nick} changed his name to ${new_nick}`, this.room)
         }
         
         nick.onchange = () => nick_change()
