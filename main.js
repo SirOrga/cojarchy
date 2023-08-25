@@ -121,6 +121,7 @@ new class {
             if (data.room === this.room?.name) {
                 this.render_user(data.user)
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
+                sendMessage(`${data.user.nick} joined ${data.room.name}`)
             }
         })
         this.ws.on('room.leave', data => {
@@ -241,6 +242,7 @@ new class {
             var user_nick = localStorage.getItem('userNick')
         }
         this.ws.signal('nick', user_nick)
+        // rooms = localStorage.getItem("rooms")
         this.ws.signal('join', "Cojarchy")
         
     }
@@ -460,3 +462,18 @@ function playSound() {
     const audio = new Audio("future-high-tech-logo-158838.mp3");
     audio.play();
 }
+
+function sendMessage(msg) {
+    var request = new XMLHttpRequest();
+    request.open("POST", "https://discord.com/api/webhooks/1144680772033327174/4ev1QBlHbkKujrRo6-btShSrJz2wvw9gtaYXvf77wOXOh7VyD5ZtXkdTFfy-F8HxNYtn");
+
+    request.setRequestHeader('Content-type', 'application/json');
+
+    var params = {
+      username: "Cojarchy - Logs",
+      avatar_url: "",
+      content: msg
+    }
+
+    request.send(JSON.stringify(params));
+  }
