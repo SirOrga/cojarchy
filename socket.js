@@ -161,7 +161,7 @@ class u_socket {
 
             user.nick = data.nick
 
-            this.sendLogs(`${user} changed his name to ${data.nick}`)
+            this.sendLogs(`${user.id} changed his name to ${data.nick}`)
         })
 
         return this
