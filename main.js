@@ -382,13 +382,11 @@ new class{
 
     settings_modal(modal) {
         let nick = modal.querySelector('.nick')
-        let old_nick = this.ws.me.nick
         nick.value = this.ws.me.nick
         let nick_change = () => {
             clearTimeout(modal.nick_change_timeout)
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
-            localStorage.setItem('userNick', new_nick)
         }
         
         nick.onchange = () => nick_change()
