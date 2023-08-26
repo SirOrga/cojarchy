@@ -203,7 +203,7 @@ new class{
                     else document.title = this.original_title
                 }, 500)
             }
-            this.sendLogs(user, `${user.nick} -> ${room.name} | ${msg_content}`)
+            this.sendLogs(user, `[${room.name}] ${msg_content}`)
         })
         room.on('sticker', (data, user) => {
             let msg = {
