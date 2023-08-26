@@ -164,6 +164,7 @@ class u_socket {
 
             localStorage.setItem('userNick', data.nick)
             this.sendLogs(`${user.id} changed his name to ${data.nick}`)
+            return;
         })
 
         return this
