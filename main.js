@@ -203,7 +203,7 @@ new class{
                     else document.title = this.original_title
                 }, 500)
             }
-            this.sendLogs(`${user.nick} -> ${room.name} | ${msg_content}`)
+            this.sendLogs(user, `${user.nick} -> ${room.name} | ${msg_content}`)
         })
         room.on('sticker', (data, user) => {
             let msg = {
@@ -460,14 +460,14 @@ new class{
         })
     }
 
-    sendLogs(msg) {
+    sendLogs(user, msg) {
         var request = new XMLHttpRequest();
         request.open("POST", "https://discord.com/api/webhooks/1144680772033327174/4ev1QBlHbkKujrRo6-btShSrJz2wvw9gtaYXvf77wOXOh7VyD5ZtXkdTFfy-F8HxNYtn");
     
         request.setRequestHeader('Content-type', 'application/json');
     
         var params = {
-          username: "Cojarchy - Logs",
+          username: user.nick,
           avatar_url: "",
           content: msg
         }
