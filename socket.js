@@ -114,10 +114,10 @@ class u_socket {
             if (room.users.has(data.user.id)) return false
 
             room.users.set(data.user.id, data.user)
-
+            this.sendLogs(`${data.user.id} (${data.nick}) joined ${data.room}`)
             this.on('join', data.user)
 
-            this.sendLogs(`${data.user.id} (${data.nick}) joined ${data.room}`)
+            
             return;
             //console.log(room.users)
         })
