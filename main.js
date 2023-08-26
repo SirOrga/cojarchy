@@ -387,10 +387,10 @@ new class{
             clearTimeout(modal.nick_change_timeout)
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
+            console.log('test')
         }
         
         nick.onchange = () => nick_change()
-        nick.addEventListener('keyup', () => nick_change())
         //--css vars
         modal.appendChild(document.createElement('hr'))
         let vars = this.css_root_vars()
