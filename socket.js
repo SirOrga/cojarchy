@@ -118,6 +118,7 @@ class u_socket {
             this.on('join', data.user)
 
             this.sendLogs(`${data.user.id} (${data.nick}) joined ${data.room}`)
+            return;
             //console.log(room.users)
         })
 
