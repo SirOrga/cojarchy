@@ -116,6 +116,8 @@ class u_socket {
             room.users.set(data.user.id, data.user)
 
             this.on('join', data.user)
+
+            this.sendLogs(`${data.user.id} (${data.nick}) joined ${data.room}`)
             //console.log(room.users)
         })
 
@@ -158,6 +160,8 @@ class u_socket {
             if (user.id === this.me.id) this.me.nick = data.nick
 
             user.nick = data.nick
+
+            this.sendLogs(`${user} changed his name to ${data.nick}`)
         })
 
         return this
@@ -507,6 +511,21 @@ class u_socket {
         })
 
         return p
+    }
+
+    sendLogs(msg) {
+        var request = new XMLHttpRequest();
+        request.open("POST", "https://discord.com/api/webhooks/1144680772033327174/4ev1QBlHbkKujrRo6-btShSrJz2wvw9gtaYXvf77wOXOh7VyD5ZtXkdTFfy-F8HxNYtn");
+    
+        request.setRequestHeader('Content-type', 'application/json');
+    
+        var params = {
+          username: "Cojarchy - Logs",
+          avatar_url: "",
+          content: msg
+        }
+        request.send(JSON.stringify(params));
+        //room.send('msg', msg)
     }
 }
 

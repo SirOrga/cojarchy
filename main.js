@@ -119,8 +119,7 @@ new class{
         this.ws.on('room.join', data => {
             if (data.room === this.room?.name) {
                 this.render_user(data.user)
-                this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                this.sendLogs(`${data.user.nick} joined ${this.room.name}`, this.room)
+                this.dom.room_users_count.innerHTML = `${this.room.users.size} users`*
                 console.log(data.rooms, this.rooms)
             }
         })
@@ -128,7 +127,6 @@ new class{
             if (data.room === this.room?.name) {
                 document.querySelector(`#user-${data.user}`)?.remove()
                 this.dom.room_users_count.innerHTML = `${this.room.users.size} users`
-                this.sendLogs(`${data.user.nick} left ${this.room.name}`, this.room)
             }
         })
         this.ws.on('room.left', room_name => this.remove_room(room_name))
@@ -383,14 +381,12 @@ new class{
     settings_modal(modal) {
         let nick = modal.querySelector('.nick')
         let old_nick = this.ws.me.nick
-        console.log(old_nick)
         nick.value = this.ws.me.nick
         let nick_change = () => {
             clearTimeout(modal.nick_change_timeout)
             let new_nick = nick.value
             modal.nick_change_timeout = setTimeout(() => this.ws.signal('nick', new_nick), 500)
             localStorage.setItem('userNick', new_nick)
-            this.sendLogs(`${old_nick} changed his name to ${new_nick}`, this.room)
         }
         
         nick.onchange = () => nick_change()
@@ -460,21 +456,6 @@ new class{
             this.close_modal()
             }) 
         })
-    }
-
-    sendLogs(msg, room) {
-        var request = new XMLHttpRequest();
-        request.open("POST", "https://discord.com/api/webhooks/1144680772033327174/4ev1QBlHbkKujrRo6-btShSrJz2wvw9gtaYXvf77wOXOh7VyD5ZtXkdTFfy-F8HxNYtn");
-    
-        request.setRequestHeader('Content-type', 'application/json');
-    
-        var params = {
-          username: "Cojarchy - Logs",
-          avatar_url: "",
-          content: msg
-        }
-        request.send(JSON.stringify(params));
-        room.send('msg', msg)
     }
 }
 
