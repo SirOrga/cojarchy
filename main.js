@@ -4,7 +4,7 @@ new class{
         document.addEventListener('DOMContentLoaded', _ => {
             this.ws = new u_socket(this.auth_data, my_data => this.init(my_data))
             this.original_title = document.title
-            this.left_side_visible = true
+            this.left_side_visible = false
             this.right_side_visible = true
             this.init_dom()
             this.init_ws()
