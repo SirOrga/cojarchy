@@ -244,7 +244,6 @@ new class{
         }
         this.ws.signal('nick', user_nick)
         // rooms = localStorage.getItem("rooms")
-        this.ws.signal('join', "Cojarchy")
         
     }
 
